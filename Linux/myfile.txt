@@ -1,0 +1,2 @@
+hello linux
+this is my first file in linux system using terminal

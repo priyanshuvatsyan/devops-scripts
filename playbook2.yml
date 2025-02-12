@@ -1,0 +1,24 @@
+---
+- name: Install Basice Utilities
+  hosts: all
+  become: yes
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install Git, curl, vim
+      apt:
+        name:
+          - git
+          - curl
+          - vim
+        state: present
+    - name: verify git installation
+      command: git --version
+      register: git_version
+
+    - name: show Git version
+      debug:
+        msg: "Git version installed: {{git_version.stdout }}"
+

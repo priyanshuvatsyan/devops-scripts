@@ -1,0 +1,38 @@
+---
+# tasks file for my_kubernetes_role
+- name: Install required packages
+  apt: 
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+    state: present
+- name: Add Kubernetes GPG key
+  shell: curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | tee /etc/apt/keyrings/kubernetes-apt-keyring.asc
+
+- name: Add kubernetes repository
+  shell: echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.asc] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /" | tee /etc/apt/sources.list.d/kubernetes.list
+
+- name: Update package list
+  apt:
+    update_cache: yes
+
+
+- name: Uppdate package List
+  apt:
+    name:
+      - kubelet
+      - kubeadm
+      - kubectl
+    state: present
+- name: Hold kubernets packages
+  dpkg_selections:
+    name: "{{ item }}"
+    selection: hold
+  loop:
+    - kubelet
+    - kubeadm
+    - kubectl
+
+
+

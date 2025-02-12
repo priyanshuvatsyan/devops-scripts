@@ -1,0 +1,6 @@
+---
+- name: Setup kubernets on target machine
+  hosts: all
+  become: yes # Run with sudo privileges
+  roles:
+    - kubernetes

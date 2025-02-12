@@ -1,0 +1,18 @@
++ logfile=/home/ubuntu/awsOutput.log
++ aws s3 ls
++ aws ec2 describe-instances
++ jq '.Reservations[].Instances[].InstanceId'
++ aws lambda list-functions
++ aws iam list-users
++ logfile=/home/ubuntu/awsOutput.log
++ aws s3 ls
++ jq '.Reservations[].Instances[].InstanceId'
++ aws ec2 describe-instances
++ aws lambda list-functions
++ aws iam list-users
++ logfile=/home/ubuntu/awsOutput.log
++ aws s3 ls
++ aws ec2 describe-instances
++ jq '.Reservations[].Instances[].InstanceId'
++ aws lambda list-functions
++ aws iam list-users

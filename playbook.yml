@@ -1,0 +1,32 @@
+
+
+
+
+---
+- name: Install and start Nginx  # Name of the playbook
+  hosts: all  # Specifies the target machines (fix: 'hosts', not 'host')
+  become: yes  # Grants root privileges (sudo)
+
+  tasks:  # Defines a list of tasks
+    - name: Install Nginx  # Task to install Nginx
+      apt:
+        name: nginx  # Specifies the package name
+        state: present  # Ensures Nginx is installed
+      become: yes  # Runs the task with elevated privileges
+
+    - name: Start Nginx  # Task to start Nginx service
+      service:
+        name: nginx  # Specifies the service to manage
+        state: started  # Ensures the service is running
+      become: yes  # Runs the task with sudo
+    
+
+
+
+
+
+
+
+
+
+

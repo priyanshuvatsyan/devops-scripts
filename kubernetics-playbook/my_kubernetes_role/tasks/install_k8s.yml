@@ -1,0 +1,6 @@
+---
+- name: Setup kubernetes on ubuntu
+  hosts: all
+  become: yes
+  roles: 
+    - my_kubernetes_role
